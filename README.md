@@ -21,6 +21,8 @@ Analyse the sentiment of tweets using Java
     
 **Phase 1 - Train the classifier**
     
-    In this phase we are going to learn how to train a sentiment claassifier. 
-    For the train purpose we need a training dataset, we are using a data set in this project. Which is located at
+    In this phase we are going to learn how to train a sentiment classifier. 
+    For the classification, either you have to use any already existing trained data set or you can create a new one.
+    Here we are just creating a new one with 3 child directories for positive, negative, neutral results.
+     
     
