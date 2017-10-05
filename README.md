@@ -7,8 +7,9 @@ Analyse the sentiment of tweets using Java
     1) twitter4j
     https://mvnrepository.com/artifact/org.twitter4j/twitter4j-core/4.0.6
     
-    2) Lingpipe
-    https://mvnrepository.com/artifact/com.aliasi/lingpipe/4.0.1
+    2) Stanford Core NLP
+       -stanford-corenlp
+       -stanford-corenlp-models
     
 
 
@@ -19,17 +20,25 @@ Analyse the sentiment of tweets using Java
     A common use case for this technology is to discover how people feel about a particular topic.
      
     
-**Phase 1 - Train the classifier**
+**Phase 1 - Creating a Twitter App**
     
-    In this phase we are going to learn how to train a sentiment classifier. 
-    For the classification, either you have to use any already existing trained data set or you can create a new one.
-    Here we are just creating a new one with 3 child directories for positive, negative, neutral results.
+    -Gto to https://apps.twitter.com and create an app
+    -Get the following informations
+      oauth.consumerKey=<api-key-for-your-app>
+      oauth.consumerSecret=<api-secret-for-your-app>
+      oauth.accessToken=<access-token>
+      oauth.accessTokenSecret=<access-token-secret>
     
-**Phase 2 - Load the classifier**
+**Phase 2 - Setup Tweets Manager**
 
-    By using the trained classifier we can do the sentiment classification in phase 2.
+    By using the creadentials we can query and fetch tweets with the help of twitter4j library.
     
-**Phase 3 - Download and classify the tweets**
+**Phase 3 - Sentiment Analyzer**
+
+    This class initializes the pipeline and findSentiment which takes in a tweet as input 
+    and returns it’s sentiment score.
+    
+    scale of 0 = very negative, 1 = negative, 2 = neutral, 3 = positive, and 4 = very positive.
 
     
     

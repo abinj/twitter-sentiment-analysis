@@ -17,16 +17,15 @@ import java.util.Set;
 
 public class MainApplication {
 
-    private static TweetsManager tweetsManager = new TweetsManager("***"
-            , "***"
-            , "***"
-            , "***");
+    private static TweetsManager tweetsManager = new TweetsManager("***OAuthConsumerKey***"
+            , "***OAuthConsumerSecret***"
+            , "***OAuthAccessToken***"
+            , "***OAuthAccessTokenSecret***");
     private static SentimentAnalyzer sentimentAnalyzer = new SentimentAnalyzer();
     private static Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
     public static void main(String[] args) throws IOException, ClassNotFoundException, InterruptedException {
         String searchKeywords = "Good Morning";
-        List<Result> results = new ArrayList<>();
         if (searchKeywords == null || searchKeywords.length() == 0) {
             return;
         }
@@ -45,11 +44,6 @@ public class MainApplication {
             //Get sentiment scores
             //    scale of 0 = very negative, 1 = negative, 2 = neutral, 3 = positive,
             //    and 4 = very positive.
-//            for(Status tweet : statuses) {
-//                System.out.println(tweet.getText() + " : " + sentimentAnalyzer.findSentimentScore(tweet.getText()));
-//            }
-
-
             List<TweetWithSentiment> sentiments = new ArrayList<>();
             for (Status status : statuses) {
                 TweetWithSentiment tweetWithSentiment = sentimentAnalyzer.findSentiment(status.getText());
@@ -58,9 +52,6 @@ public class MainApplication {
                 }
             }
             System.out.println(keyword + ": " + gson.toJson(sentiments));
-//            Result result = new Result(keyword, sentiments);
-//            results.add(result);
         }
-        return;
     }
 }

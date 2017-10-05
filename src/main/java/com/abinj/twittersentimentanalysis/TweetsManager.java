@@ -10,7 +10,6 @@ import java.util.List;
 
 public class TweetsManager {
 
-    SentimentClassifier sentClassifier;
     int LIMIT= 100; //the number of retrieved tweets
     private Twitter twitter;
 
@@ -22,7 +21,6 @@ public class TweetsManager {
         cb.setOAuthAccessToken(OAuthAccessToken);
         cb.setOAuthAccessTokenSecret(OAuthAccessTokenSecret);
         twitter = new TwitterFactory(cb.build()).getInstance();
-        sentClassifier = new SentimentClassifier();
     }
 
     public List<Status> performQuery(String keyword) throws InterruptedException, IOException {
