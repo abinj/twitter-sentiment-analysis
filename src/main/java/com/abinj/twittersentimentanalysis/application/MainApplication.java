@@ -17,10 +17,10 @@ import java.util.Set;
 
 public class MainApplication {
 
-    private static TweetsManager tweetsManager = new TweetsManager("W86NVli4BSeDpcRLenPT1If1J"
-            , "Aig6w4iN7kv9pQ3koK6AoS0XieJjOHAZ456Ax5xyPpZgwXcQ94"
-            , "4267078812-mMxh9SnPqliUDlNYjFVr6zCKfCugu2WLaZ0h3jU"
-            , "yMqE4Fs8Axv7Ru3wAzTD3BfXPnVcgoYe0OJeHOwasbwQ2");
+    private static TweetsManager tweetsManager = new TweetsManager("***"
+            , "***"
+            , "***"
+            , "***");
     private static SentimentAnalyzer sentimentAnalyzer = new SentimentAnalyzer();
     private static Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
@@ -41,6 +41,15 @@ public class MainApplication {
         for (String keyword : keywords) {
             List<Status> statuses = tweetsManager.performQuery(keyword);
             System.out.println("Found statuses ... " + statuses.size());
+
+            //Get sentiment scores
+            //    scale of 0 = very negative, 1 = negative, 2 = neutral, 3 = positive,
+            //    and 4 = very positive.
+//            for(Status tweet : statuses) {
+//                System.out.println(tweet.getText() + " : " + sentimentAnalyzer.findSentimentScore(tweet.getText()));
+//            }
+
+
             List<TweetWithSentiment> sentiments = new ArrayList<>();
             for (Status status : statuses) {
                 TweetWithSentiment tweetWithSentiment = sentimentAnalyzer.findSentiment(status.getText());
@@ -49,8 +58,8 @@ public class MainApplication {
                 }
             }
             System.out.println(keyword + ": " + gson.toJson(sentiments));
-            Result result = new Result(keyword, sentiments);
-            results.add(result);
+//            Result result = new Result(keyword, sentiments);
+//            results.add(result);
         }
         return;
     }
